@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>查看ios型号</title>
+  <title>查看android型号</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
   <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.3.4/vconsole.min.js"></script>
   <script src="android-model-detector.js"></script>
@@ -31,10 +31,10 @@
       document.getElementById("modelText").innerHTML = "型号:"+config_device_model;
 
       let deviceInfo = new MobileDetect(user_agent);//实例化mobile-detect
-  // 设备的具体型号
+      // 设备的具体型号
       // let config_device_model = deviceInfo.mobile()
-      let config_device_brand = deviceInfo.phone()
-      document.getElementById("brandText").innerHTML = "品牌:"+config_device_brand;
+      // let config_device_brand = deviceInfo.phone()
+      // document.getElementById("brandText").innerHTML = "品牌:"+config_device_brand;
     }
   </script>
 </head>

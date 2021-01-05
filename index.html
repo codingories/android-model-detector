@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>查看ios型号</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <script src="https://cdn.bootcdn.net/ajax/libs/vConsole/3.3.4/vconsole.min.js"></script>
+  <script src="android-model-detector.js"></script>
+  <script>
+    window.onload=function(){
+      //判断数组中是否包含某字符串（安卓机型获取用到）
+      function contains(needle, list) {
+        for (let i in list) {
+          if (list[i].indexOf(needle) > 0)
+            return i;
+        }
+        return -1;
+      }
+      let config_device_model;
+      let user_agent = navigator.userAgent
+      let sss = user_agent.split(";");
+      //判断UA里边有没有Build信息，通过这个拿到安卓的具体机型
+      let i = contains("Build/", sss);
+      if (i > -1) {
+        let newMobile = sss[i].substring(0, sss[i].indexOf("Build/"));
+        console.log('newMobile', newMobile)
+        config_device_model = newMobile
+      }else{
+        config_device_model = 'unknown'
+      }
+      document.getElementById("modelText").innerHTML = "型号:"+config_device_model;
+
+      let deviceInfo = new MobileDetect(user_agent);//实例化mobile-detect
+      // 设备的具体型号
+      // let config_device_model = deviceInfo.mobile()
+      // 设备的品牌
+      let config_device_brand = deviceInfo.phone()
+      document.getElementById("brandText").innerHTML = "品牌:"+config_device_brand;
+    }
+  </script>
+</head>
+<body>
+  <h2 id="brandText">
+  </h2>
+  <h2 id="modelText">
+  </h2>
+</body>
+</html>

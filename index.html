@@ -31,9 +31,8 @@
       document.getElementById("modelText").innerHTML = "型号:"+config_device_model;
 
       let deviceInfo = new MobileDetect(user_agent);//实例化mobile-detect
-      // 设备的具体型号
+  // 设备的具体型号
       // let config_device_model = deviceInfo.mobile()
-      // 设备的品牌
       let config_device_brand = deviceInfo.phone()
       document.getElementById("brandText").innerHTML = "品牌:"+config_device_brand;
     }
